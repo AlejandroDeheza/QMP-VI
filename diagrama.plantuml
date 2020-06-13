@@ -1,0 +1,57 @@
+@startuml
+class Usuario {
+	-AsesorDeImagen Asesor
+    -String mail
+    -List<Accion> Acciones
+
+	+List<Atuendo> obtenerSugerencias()
+	+void aplicarAcciones(List<Alerta> Alertas)
+    +AgregarAccion(Accion accion)
+    +eliminarAccion(Accion accion)
+}
+
+class RepositorioUsuarios {
+    -List<Usuario> UsuariosDelSistema
+    -ServicioMeteorologico servicioMeteorologico
+
+	+void ActualizarSugerencias()
+	+void ActualizarAlertas()
+}
+
+interface ServicioMeteorologico {
+	+List<Alerta> ObtenerAlertas()
+}
+
+interface Accion {
+	+Aplicar(Usuario usuario, List<Alerta> alertas)
+}
+
+class ActualizarSugerencia{
+    +Aplicar(Usuario usuario, List<Alerta> alertas)
+}
+
+class AvisarTormenta{
+    +Aplicar(Usuario usuario, List<Alerta> alertas)
+}
+
+class AvisarGranizo{
+    +Aplicar(Usuario usuario, List<Alerta> alertas)
+}
+
+class MandarMailDeAlertas{
+    +Aplicar(Usuario usuario, List<Alerta> alertas)
+}
+
+Usuario --> "*" Accion
+
+RepositorioUsuarios --> "*" Usuario
+RepositorioUsuarios --> "1" ServicioMeteorologico
+
+AccuWeatherAPI ..|>  ServicioMeteorologico
+
+ActualizarSugerencia ..|>  Accion
+AvisarTormenta ..|>  Accion
+AvisarGranizo ..|>  Accion
+MandarMailDeAlertas ..|>  Accion
+
+@enduml
