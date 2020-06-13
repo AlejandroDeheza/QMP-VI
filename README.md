@@ -8,6 +8,8 @@
 
 ## Seudocódigo
 
++ tambien se puede mirar [aca](https://github.com/AlejandroDeheza/QMP-VI/blob/master/seudocodigo.java)
+
 ~~~
 
 class Usuario {
