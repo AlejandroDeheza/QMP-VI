@@ -1,45 +1,45 @@
 @startuml
 class Usuario {
-	-AsesorDeImagen Asesor
+	-AsesorDeImagen asesor
     -String mail
-    -List<Accion> Acciones
+    -List<Accion> acciones
 
 	+List<Atuendo> obtenerSugerencias()
-	+void aplicarAcciones(List<Alerta> Alertas)
-    +AgregarAccion(Accion accion)
-    +eliminarAccion(Accion accion)
+	+void aplicarAcciones(List<Alerta> alertas)
+    +void agregarAccion(Accion accion)
+    +void eliminarAccion(Accion accion)
 }
 
 class RepositorioUsuarios {
-    -List<Usuario> UsuariosDelSistema
+    -List<Usuario> usuariosDelSistema
     -ServicioMeteorologico servicioMeteorologico
 
-	+void ActualizarSugerencias()
-	+void ActualizarAlertas()
+	+void actualizarSugerencias()
+	+void actualizarAlertas()
 }
 
 interface ServicioMeteorologico {
-	+List<Alerta> ObtenerAlertas()
+	+List<Alerta> obtenerAlertas()
 }
 
 interface Accion {
-	+Aplicar(Usuario usuario, List<Alerta> alertas)
+	+void aplicar(Usuario usuario, List<Alerta> alertas)
 }
 
 class ActualizarSugerencia{
-    +Aplicar(Usuario usuario, List<Alerta> alertas)
+    +void aplicar(Usuario usuario, List<Alerta> alertas)
 }
 
 class AvisarTormenta{
-    +Aplicar(Usuario usuario, List<Alerta> alertas)
+    +void aplicar(Usuario usuario, List<Alerta> alertas)
 }
 
 class AvisarGranizo{
-    +Aplicar(Usuario usuario, List<Alerta> alertas)
+    +void aplicar(Usuario usuario, List<Alerta> alertas)
 }
 
 class MandarMailDeAlertas{
-    +Aplicar(Usuario usuario, List<Alerta> alertas)
+    +void aplicar(Usuario usuario, List<Alerta> alertas)
 }
 
 Usuario --> "*" Accion

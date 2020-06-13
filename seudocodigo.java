@@ -1,15 +1,3 @@
-# Qué Me Pongo - Sexta iteración
-
-## Diagrama de clases
-
-<img src="diagrama.png">
-
----
-
-## Seudocódigo
-
-~~~
-
 class Usuario {
 	AsesorDeImagen asesor;
     String mail;
@@ -82,5 +70,3 @@ class MandarMailDeAlertas{
         enviar(mail, alertas);
     }
 }
-
-~~~
